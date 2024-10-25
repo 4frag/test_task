@@ -1,0 +1,9 @@
+@if (cat) {
+  <div class="py-4 px-6 border rounded flex items-center flex-col mb-2" (click)="openEditPopup()">
+    <h2 class="mb-2 text-md text-center">Кот {{ cat.name }}</h2>
+  
+    <span>дата рождения {{ cat.birth_date || "не указана" }}</span>
+    <span>порода {{ cat.breed || "не указана" }}</span>
+    <span>степень пушистости {{ cat.hairiness || "не указана" }}</span>
+  </div>
+}

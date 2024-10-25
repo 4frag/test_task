@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "test-task"
+version = "0.1.0"
+description = "django + angular 8"
+authors = ["4frag <alexmainacc0unt@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.1.2"
+djangorestframework = "^3.15.2"
+pydantic = "^2.9.2"
+django-environ = "^0.11.2"
+django-cors-headers = "^4.5.0"
+channels = {extras = ["daphne"], version = "^4.1.0"}
+channels-redis = "^4.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 150
+
+
+[tool.ruff.lint]
+ignore = ["E501", "I001"]
+select = [
+    "E",
+    "F",
+    "UP",
+    "B",
+    "SIM",
+    "I",
+]
+
+
+[tool.ruff.format]
+exclude = [
+    "*.cfg",
+    "*.log",
+    "*.env",
+    "*.lock",
+    "*.toml",
+    "*.txt",
+    "*.html",
+]
+docstring-code-format = true
+docstring-code-line-length = 150
+quote-style = "single"
+line-ending = "lf"
+indent-style = "space"

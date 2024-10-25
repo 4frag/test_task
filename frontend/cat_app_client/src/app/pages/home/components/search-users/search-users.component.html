@@ -1,0 +1,13 @@
+<form #search>
+  <input type="text" placeholder="Найти пользователей" [formControl]="query">
+</form>
+
+@if (results.length > 0) {
+  @for (user of results; track $index) {
+    <div class="border-2 border-slate-400">
+      <span class="text-blue-400" (click)="getOrCreateChat(user.id)">{{user.username}}</span>
+    </div>
+  }
+} @else if (isSearch) {
+  <span>Ничего не найдено</span>
+}

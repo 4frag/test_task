@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
+</head>
+<body>
+  <h1>test</h1>
+
+  <input id="chat_id" type="number" placeholder="chat_id">
+  <button onclick="connect()">connect</button>
+  <form id="message">
+    <input type="text">
+  </form>
+
+  <div id="messages"></div>
+
+  <script type="text/javascript">
+    function connect() {
+      let chat_id = document.getElementById('chat_id').value
+      if (chat_id === '') {
+        return
+      }
+      let url = `ws://${window.location.host}/ws/${chat_id}/`
+
+      const chatSocket = new WebSocket(url)
+
+      chatSocket.onmessage = function(e){
+          let data = JSON.parse(e.data)
+          console.log('Data:', data)
+
+          if(data.type === 'chat'){
+              let messages = document.getElementById('messages')
+
+              messages.insertAdjacentHTML('beforeend', `<div>
+                                      <p>${data.message}</p>
+                                  </div>`)
+          }
+      }
+
+      const form = document.getElementById('message')
+      form.onsubmit = (e) => {
+        chatSocket.send(JSON.stringify({'message': form.querySelector('input').value, 'chat_id': chat_id}))
+        form.reset()
+        return false
+      }
+    }
+  </script>
+</body>
+</html>

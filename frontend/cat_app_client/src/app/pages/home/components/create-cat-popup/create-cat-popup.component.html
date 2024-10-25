@@ -1,0 +1,13 @@
+<form class="border-slate-200 p-2 bg-blue-300 flex flex-col gap-2 placeholder-black-600" [formGroup]="createCatForm" onsubmit="return false">
+  <input type="text" placeholder="Имя" formControlName="name">
+  <input type="date" placeholder="Дата рождения" formControlName="birth_date">
+  <input type="text" placeholder="Порода" formControlName="breed">
+  <input type="number" placeholder="Степень пушистости" formControlName="hairiness">
+  <div class="flex justify-between">
+    <button (click)="close()">Закрыть</button>
+    @if (context.edit) {
+      <button (click)="deleteCat()">Удалить</button>
+    }
+    <button (click)="handleClick()">{{ context.buttonText }}</button>
+  </div>
+</form>

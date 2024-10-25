@@ -1,0 +1,12 @@
+<h2>Ваши коты</h2>
+
+@if (catsService.cats && catsService.cats.length > 0) {
+  @for (cat of catsService.cats; track $index) {
+    <app-cat-item [cat]="cat"></app-cat-item>
+  }
+} @else {
+  <h3>У вас пока нет котов(</h3>
+}
+
+<button class="mt-4" (click)="showCatPopup()">Создать кота</button>
+

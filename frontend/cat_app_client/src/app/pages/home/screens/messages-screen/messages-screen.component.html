@@ -1,0 +1,8 @@
+<h1>Сообщения</h1>
+
+@if (chatId != null) {
+  <app-chat [chatId]="chatId"></app-chat>
+} @else {
+  <app-search-users></app-search-users>
+  <app-chats-list></app-chats-list>
+}

@@ -1,0 +1,5 @@
+@if (chat) {
+  <a routerLink="/home/messages/{{chat.id}}" class="flex">
+    <h3>{{chat.interlocutor.username}} <span class="ml-10 text-sm">{{chat.last_message.text}}</span></h3>
+  </a>
+}

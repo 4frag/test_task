@@ -1,0 +1,19 @@
+<div class="flex">
+  <h1>{{chatInfo?.interlocutor?.username}}</h1>
+  <a routerLink="/home/messages">Закрыть</a>
+</div>
+<div class="h-4/5">
+  <div class="overflow-y-scroll h-full flex flex-col-reverse">
+    @if (messagesService.messages.length > 0) {
+      @for (message of messagesService.messages; track $index) {
+        <span class="text-sm">{{message.date_of_send}}</span>
+        <span>{{message.text}}</span>
+        <h4>{{message.author}}</h4>
+      }
+    }
+  </div>
+</div>
+<form class="flex" [formGroup]="messageGroup" (submit)="sendMessage()">
+  <input type="text" placeholder="Отправить" formControlName="message">
+  <button (click)="sendMessage()">Отправить</button>
+</form>

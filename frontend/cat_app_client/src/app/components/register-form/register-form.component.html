@@ -1,0 +1,11 @@
+<form class="w-l border-slate-200 border-solid border-2 p-2" onsubmit="return false" [formGroup]="loginForm" (input)="handleInput()">
+  <label for="name">Имя: </label>
+  <input id="name" type="text" formControlName="username">
+  <label for="password">Пароль: </label>
+  <input id="password" type="password" formControlName="password">
+  <input type="password" formControlName="password_check">
+
+  <button (click)="handleClick()" [disabled]="isButtonDisabled">Зарегистрироваться</button>
+
+  <p>Уже есть аккаунт? Ты можешь войти <a routerLink="/login">здесь</a></p>
+</form>
